@@ -19,6 +19,13 @@
   box-sizing: border-box;
 }
 
+/* PREVENT HORIZONTAL OVERFLOW ON ALL DEVICES */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
@@ -26,6 +33,13 @@ body {
   overflow-x: hidden;
   background: var(--dark-bg);
   color: var(--text-light);
+  width: 100%;
+  max-width: 100vw;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* ==================== */
@@ -362,6 +376,23 @@ nav {
   display: flex;
   gap: 1.5rem;
   padding: 1rem 0;
+  position: relative;
+}
+
+/* Ensure video carousel container never overflows */
+.videos-track,
+.brands-track {
+  all: revert;
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* Ensure carousel parent containers clip overflow */
+.relative.w-full.overflow-hidden {
+  overflow: hidden !important;
+  width: 100%;
+  max-width: 100%;
 }
 
 .video-card {
@@ -1062,6 +1093,26 @@ footer {
 
 /* SMALL SCREENS (MOBILE) - COMPLETE FIX */
 @media (max-width: 768px) {
+  /* PREVENT HORIZONTAL SCROLL - UNIVERSAL */
+  * {
+    max-width: 100%;
+  }
+  
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure all main containers respect viewport */
+  section,
+  div[className*="container"],
+  div[className*="max-w"] {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
   /* NAVIGATION - Fixed spacing */
   header {
     padding: 0;
@@ -1103,6 +1154,26 @@ footer {
     height: 44px;
     margin-left: 0.75rem;
     order: 3;
+  }
+  
+  /* MOBILE CAROUSEL FIX - Prevent page horizontal scroll */
+  .brands-scroll-container,
+  .relative.w-full.overflow-hidden {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: auto;
+  }
+  
+  .brands-track,
+  .videos-track {
+    max-width: none;
+  }
+  
+  /* Prevent any child element from breaking out */
+  [className*="brands-bar"] *,
+  [className*="workmanship"] [className*="overflow-hidden"] * {
+    max-width: 100%;
   }
 
   .cta-btn-desktop {
