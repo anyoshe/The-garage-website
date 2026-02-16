@@ -3,9 +3,9 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Sir Luke Garage - 24/7 Breakdown Recovery & Auto Repairs',
-    short_name: 'SirLuke',
-    description: 'Nairobi\'s trusted garage for fast recovery, diagnostics, and repairs. Book now!',
+    name: 'The Garage Auto - Professional Auto Services in Mirema, Nairobi',
+    short_name: 'Garage Auto',
+    description: 'Expert auto repair & maintenance in Mirema. Engine repairs, towing, AC service, transmissions & more. Honest prices, fast service. Book now!',
     theme_color: '#00aaff',
     background_color: '#0a0a0a',
     display: 'standalone',
